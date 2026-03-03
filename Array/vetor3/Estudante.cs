@@ -8,16 +8,16 @@
         public int Quarto { get; set; }
 
 
-        public Estudante (string name, string email, int quarto)
+        public Estudante (string name, string email)
         {
             Name = name;
             Email = email;
-            Quarto = quarto;
+            
         }
 
         public override string ToString()
         {
-            return $"{Quarto}: {Name}, {Email}";
+            return $"{Name}, {Email}";
         }
     }
 

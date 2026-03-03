@@ -1,7 +1,4 @@
 ﻿using Array.vetor3;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
 
 namespace Array
 {
@@ -10,14 +7,12 @@ namespace Array
         static void Main(string[] args)
         {
 
-            Estudante e;
-
-            int n = int.Parse(Console.ReadLine());
-
             Estudante[] vet = new Estudante[10];
 
             Console.WriteLine("Informe a quantidade de estudantes que irão alugar: ");
             int est = int.Parse(Console.ReadLine());
+
+
 
             for (int i = 0; i < est; i++)
             {
@@ -27,13 +22,29 @@ namespace Array
                 Console.WriteLine("Informe o email: ");
                 string email = Console.ReadLine();
 
-                Console.WriteLine("Informe o número do quarto: ");
-                int quarto = int.Parse(Console.ReadLine()); 
+                Console.WriteLine("Informe o número do quarto (0-9): ");
+                int quarto = int.Parse(Console.ReadLine());
 
-                vet[i] = new Estudante(name, email, quarto);
+
+                
+                while (quarto<0 || quarto>9 || vet[quarto]!=null)
+                {
+                    Console.WriteLine("Quarto indisponível! Escolha outro quarto: ");
+                    quarto = int.Parse(Console.ReadLine());
+                }
+                
+                vet[quarto] = new Estudante (name, email);
 
             }
 
+            Console.WriteLine("Quartos ocupados: ");
+            for (int i = 0; i < 10; i++)
+            {
+                if (vet[i] != null)
+                {
+                    Console.WriteLine($"{i}: {vet[i]}");
+                }
+            }
 
 
 
